@@ -209,7 +209,7 @@ public class GameTests {
 	public void testMergeStates_Winner() {
 		Assert.assertEquals(
 			gameHelper.mergeGameStates(GameState.WINNER_CROSS, null), 
-			GameState.WINNER_CIRCLE);
+			GameState.WINNER_CROSS);
 
 		Assert.assertEquals(
 			gameHelper.mergeGameStates(GameState.WINNER_CIRCLE, null), 
