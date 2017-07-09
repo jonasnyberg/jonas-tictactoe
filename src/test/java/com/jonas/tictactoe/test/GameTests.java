@@ -29,7 +29,7 @@ public class GameTests {
 	}
 
 	@Test
-	public void testGameStateWinner() {
+	public void testParialGameStateWinner() {
 		Marker[] markers;
 		GameState state;
 		
@@ -76,7 +76,7 @@ public class GameTests {
 	}
 	
 	@Test
-	public void testGameStateDraw() {
+	public void testPartialGameStateDraw() {
 		Marker[] markers;
 		GameState state;
 		
@@ -118,7 +118,7 @@ public class GameTests {
 	}
 
 	@Test
-	public void testGameStateNotComplete() {
+	public void testPartialGameStateNotComplete() {
 		Marker[] markers;
 		GameState state;
 		
@@ -208,23 +208,27 @@ public class GameTests {
 	@Test
 	public void testMergeStates_Winner() {
 		Assert.assertEquals(
+			gameHelper.mergeGameStates(GameState.WINNER_CROSS, null), 
+			GameState.WINNER_CIRCLE);
+
+		Assert.assertEquals(
 			gameHelper.mergeGameStates(GameState.WINNER_CIRCLE, null), 
 			GameState.WINNER_CIRCLE);
 
 		Assert.assertEquals(
 			gameHelper.mergeGameStates(GameState.WINNER_CROSS, GameState.DRAW), 
 			GameState.WINNER_CROSS);
-
+		
 		Assert.assertEquals(
-			gameHelper.mergeGameStates(GameState.WINNER_CIRCLE, GameState.NOT_COMPLETE), 
+			gameHelper.mergeGameStates(GameState.WINNER_CIRCLE, GameState.DRAW), 
 			GameState.WINNER_CIRCLE);
 
 		Assert.assertEquals(
-			gameHelper.mergeGameStates(GameState.WINNER_CROSS, GameState.WINNER_CIRCLE), 
+			gameHelper.mergeGameStates(GameState.WINNER_CROSS, GameState.NOT_COMPLETE), 
 			GameState.WINNER_CROSS);
-
+		
 		Assert.assertEquals(
-			gameHelper.mergeGameStates(GameState.WINNER_CIRCLE, GameState.WINNER_CROSS), 
+			gameHelper.mergeGameStates(GameState.WINNER_CIRCLE, GameState.NOT_COMPLETE), 
 			GameState.WINNER_CIRCLE);
 	}
 	
