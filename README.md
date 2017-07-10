@@ -7,8 +7,8 @@ _https://code.google.com/codejam/contest/2270488/dashboard_
 1. Clone the project
 2. Build with Maven: **mvn clean package**
 3. Open the _target_ directory and run:
-	1. Small dataset (10 games): **java -jar jonas-tictactoe.jar < A-small-practice.in**
-	2. Large dataset (1000 games): **java -jar jonas-tictactoe.jar < A-large-practice.in**
+	1. Small dataset (10 games): **java -jar jonas-tictactoe.jar < data-files/A-small-practice.in**
+	2. Large dataset (1000 games): **java -jar jonas-tictactoe.jar < data-files/A-large-practice.in**
 
 ## Running from inside Eclipse:
 If you want to test it from within Eclipse, simple follow below steps:
