@@ -16,5 +16,5 @@ If you want to test it from within Eclipse, simple follow below steps:
 1. Clone the project
 2. Inside Eclipse, choose **File > Import... > Existing Maven Projects** and select the root directory of this project.
 3. You can now try either of the supplied datasets using one of the two _Eclipse launch_ files in the project: 
-	1. Eclipse-dataset_large.launch (mapped to => A-small-practice.in)
-	2. Eclipse-dataset_small.launch (mapped to => A-large-practice.in)
+	1. Eclipse-dataset_small.launch (mapped to => A-small-practice.in)
+	2. Eclipse-dataset_large.launch (mapped to => A-large-practice.in)
