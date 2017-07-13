@@ -19,10 +19,6 @@ public class Board {
 		return size;
 	}
 	
-	public void addMarker(int row, int col, char charSymbol) {
-		this.addMarker(row, col, Marker.parse(charSymbol));
-	}
-	
 	public void addMarker(int row, int col, Marker marker) {
 		if (marker == null) {
 			throw new IllegalArgumentException("Invalid Board Marker supplied");
@@ -31,6 +27,7 @@ public class Board {
 		} else if (col < 0 || col >= size) {
 			throw new IllegalArgumentException("Invalid column supplied");
 		}
+		
 		data[row][col] = marker;
 	}
 	

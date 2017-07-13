@@ -80,10 +80,10 @@ public class BoardTests {
 	@Test
 	public void testGetRowMarkers() {
 		int row = 1;
-		board.addMarker(row, 0, 'X');
-		board.addMarker(row, 1, 'O');
-		board.addMarker(row, 2, '.');
-		board.addMarker(row, 3, 'T');
+		board.addMarker(row, 0, Marker.CROSS);
+		board.addMarker(row, 1, Marker.CIRCLE);
+		board.addMarker(row, 2, Marker.EMPTY);
+		board.addMarker(row, 3, Marker.WILD_CARD);
 		
 		Marker[] markers = board.getRowMarkers(row);
 		Assert.assertEquals(markers[0], Marker.CROSS);
@@ -95,10 +95,10 @@ public class BoardTests {
 	@Test
 	public void testGetColMarkers() {
 		int col = 2;
-		board.addMarker(0, col, '.');
-		board.addMarker(1, col, 'X');
-		board.addMarker(2, col, 'T');
-		board.addMarker(3, col, 'O');
+		board.addMarker(0, col, Marker.EMPTY);
+		board.addMarker(1, col, Marker.CROSS);
+		board.addMarker(2, col, Marker.WILD_CARD);
+		board.addMarker(3, col, Marker.CIRCLE);
 		
 		Marker[] markers = board.getColumnMarkers(col);
 		Assert.assertEquals(markers[0], Marker.EMPTY);
@@ -113,10 +113,10 @@ public class BoardTests {
 		
 		// First diagonal:
 		
-		board.addMarker(0, 0, 'X');
-		board.addMarker(1, 1, '.');
-		board.addMarker(2, 2, 'O');
-		board.addMarker(3, 3, 'T');
+		board.addMarker(0, 0, Marker.CROSS);
+		board.addMarker(1, 1, Marker.EMPTY);
+		board.addMarker(2, 2, Marker.CIRCLE);
+		board.addMarker(3, 3, Marker.WILD_CARD);
 
 		markers = board.getFirstDiagonalMarkers();
 		Assert.assertEquals(markers[0], Marker.CROSS);
@@ -126,10 +126,10 @@ public class BoardTests {
 
 		// Second diagonal:
 
-		board.addMarker(0, 3, 'T');
-		board.addMarker(1, 2, 'O');
-		board.addMarker(2, 1, '.');
-		board.addMarker(3, 0, 'X');
+		board.addMarker(0, 3, Marker.WILD_CARD);
+		board.addMarker(1, 2, Marker.CIRCLE);
+		board.addMarker(2, 1, Marker.EMPTY);
+		board.addMarker(3, 0, Marker.CROSS);
 		
 		markers = board.getSecondDiagonalMarkers();
 		Assert.assertEquals(markers[0], Marker.WILD_CARD);
