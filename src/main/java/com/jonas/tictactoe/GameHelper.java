@@ -7,15 +7,12 @@
 package com.jonas.tictactoe;
 
 public final class GameHelper {
-	private static GameHelper instance = null;
+	private static final GameHelper instance = new GameHelper();
 	
 	private GameHelper() {
 	}
 	
 	public static GameHelper getInstance() {
-		if (instance == null) {
-			instance = new GameHelper();
-		}
 		return instance;
 	}
 	
@@ -24,23 +21,24 @@ public final class GameHelper {
 	 */
 	public GameState getOverallStateForMarkers(Marker[] markers) {
 		GameState state = null;
-		Marker prevMarker = null;
+		Marker prevCircleOrCrossMarker = null;
 		
 		for (Marker marker : markers) {
 			switch (marker) {
 				case CROSS:
 				case CIRCLE:
-					if (state != GameState.DRAW) {
-						if (prevMarker == null || prevMarker == marker || prevMarker == Marker.WILD_CARD) {
-							state = marker == Marker.CROSS ? 
-								GameState.WINNER_CROSS : GameState.WINNER_CIRCLE;
-						} else {
-							state = GameState.DRAW;
-						}
+					if (state == GameState.DRAW) {
+						break;
 					}
-					prevMarker = marker;
+					if (prevCircleOrCrossMarker == null || prevCircleOrCrossMarker == marker) {
+						state = marker == Marker.CROSS ? GameState.WINNER_CROSS : GameState.WINNER_CIRCLE;
+					} else {
+						state = GameState.DRAW;
+					}
+					prevCircleOrCrossMarker = marker;
 					break;
 				case WILD_CARD:
+					// Do nothing.
 					break;
 				case EMPTY:
 				default:
