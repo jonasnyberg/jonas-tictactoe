@@ -162,73 +162,73 @@ public class GameTests {
 	@Test
 	public void testMergeStates_Draw() {
 		Assert.assertEquals(
-			gameHelper.mergeGameStates(GameState.DRAW, null), 
+			gameHelper.calculateNewState(GameState.DRAW, null), 
 			GameState.DRAW);
 
 		Assert.assertEquals(
-			gameHelper.mergeGameStates(GameState.DRAW, GameState.DRAW), 
+			gameHelper.calculateNewState(GameState.DRAW, GameState.DRAW), 
 			GameState.DRAW);
 
 		Assert.assertEquals(
-			gameHelper.mergeGameStates(GameState.DRAW, GameState.NOT_COMPLETE), 
+			gameHelper.calculateNewState(GameState.DRAW, GameState.NOT_COMPLETE), 
 			GameState.NOT_COMPLETE);
 
 		Assert.assertEquals(
-			gameHelper.mergeGameStates(GameState.DRAW, GameState.WINNER_CIRCLE), 
+			gameHelper.calculateNewState(GameState.DRAW, GameState.WINNER_CIRCLE), 
 			GameState.WINNER_CIRCLE);
 
 		Assert.assertEquals(
-			gameHelper.mergeGameStates(GameState.DRAW, GameState.WINNER_CROSS), 
+			gameHelper.calculateNewState(GameState.DRAW, GameState.WINNER_CROSS), 
 			GameState.WINNER_CROSS);
 	}
 
 	@Test
 	public void testMergeStates_NotComplete() {
 		Assert.assertEquals(
-			gameHelper.mergeGameStates(GameState.NOT_COMPLETE, null), 
+			gameHelper.calculateNewState(GameState.NOT_COMPLETE, null), 
 			GameState.NOT_COMPLETE);
 
 		Assert.assertEquals(
-			gameHelper.mergeGameStates(GameState.NOT_COMPLETE, GameState.DRAW), 
+			gameHelper.calculateNewState(GameState.NOT_COMPLETE, GameState.DRAW), 
 			GameState.NOT_COMPLETE);
 
 		Assert.assertEquals(
-			gameHelper.mergeGameStates(GameState.NOT_COMPLETE, GameState.NOT_COMPLETE), 
+			gameHelper.calculateNewState(GameState.NOT_COMPLETE, GameState.NOT_COMPLETE), 
 			GameState.NOT_COMPLETE);
 
 		Assert.assertEquals(
-			gameHelper.mergeGameStates(GameState.NOT_COMPLETE, GameState.WINNER_CIRCLE), 
+			gameHelper.calculateNewState(GameState.NOT_COMPLETE, GameState.WINNER_CIRCLE), 
 			GameState.WINNER_CIRCLE);
 
 		Assert.assertEquals(
-			gameHelper.mergeGameStates(GameState.NOT_COMPLETE, GameState.WINNER_CROSS), 
+			gameHelper.calculateNewState(GameState.NOT_COMPLETE, GameState.WINNER_CROSS), 
 			GameState.WINNER_CROSS);
 	}
 
 	@Test
 	public void testMergeStates_Winner() {
 		Assert.assertEquals(
-			gameHelper.mergeGameStates(GameState.WINNER_CROSS, null), 
+			gameHelper.calculateNewState(GameState.WINNER_CROSS, null), 
 			GameState.WINNER_CROSS);
 
 		Assert.assertEquals(
-			gameHelper.mergeGameStates(GameState.WINNER_CIRCLE, null), 
+			gameHelper.calculateNewState(GameState.WINNER_CIRCLE, null), 
 			GameState.WINNER_CIRCLE);
 
 		Assert.assertEquals(
-			gameHelper.mergeGameStates(GameState.WINNER_CROSS, GameState.DRAW), 
+			gameHelper.calculateNewState(GameState.WINNER_CROSS, GameState.DRAW), 
 			GameState.WINNER_CROSS);
 		
 		Assert.assertEquals(
-			gameHelper.mergeGameStates(GameState.WINNER_CIRCLE, GameState.DRAW), 
+			gameHelper.calculateNewState(GameState.WINNER_CIRCLE, GameState.DRAW), 
 			GameState.WINNER_CIRCLE);
 
 		Assert.assertEquals(
-			gameHelper.mergeGameStates(GameState.WINNER_CROSS, GameState.NOT_COMPLETE), 
+			gameHelper.calculateNewState(GameState.WINNER_CROSS, GameState.NOT_COMPLETE), 
 			GameState.WINNER_CROSS);
 		
 		Assert.assertEquals(
-			gameHelper.mergeGameStates(GameState.WINNER_CIRCLE, GameState.NOT_COMPLETE), 
+			gameHelper.calculateNewState(GameState.WINNER_CIRCLE, GameState.NOT_COMPLETE), 
 			GameState.WINNER_CIRCLE);
 	}
 	

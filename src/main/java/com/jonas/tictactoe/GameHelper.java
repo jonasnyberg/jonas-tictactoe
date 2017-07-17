@@ -40,24 +40,13 @@ public final class GameHelper {
 		return state;
 	}
 	
-	public GameState mergeGameStates(GameState currentState, GameState newState) {
-		if (currentState == null) {
-			return newState;
-		} else if (newState == null) {
+	public GameState calculateNewState(GameState currentState, GameState newState) {
+		if (newState == null) {
 			return currentState;
+		} else if (currentState == null) {
+			return newState;
 		}
-		
-		switch (currentState) {
-			case WINNER_CROSS:
-			case WINNER_CIRCLE:
-				return currentState;
-			case NOT_COMPLETE:
-				return hasWinner(newState) ? newState : currentState;
-			case DRAW:
-				return hasWinner(newState) || newState == GameState.NOT_COMPLETE ? newState : currentState;
-			default:
-				return newState;
-		}
+		return currentState.getWeight() >= newState.getWeight() ? currentState : newState;
 	}
 	
 	public boolean hasWinner(GameState state) {
