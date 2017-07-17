@@ -24,30 +24,21 @@ public final class GameHelper {
 		Marker prevCircleOrCrossMarker = null;
 		
 		for (Marker marker : markers) {
-			switch (marker) {
-				case CROSS:
-				case CIRCLE:
-					if (state == GameState.DRAW) {
-						break;
-					}
-					if (prevCircleOrCrossMarker == null || prevCircleOrCrossMarker == marker) {
-						state = marker == Marker.CROSS ? GameState.WINNER_CROSS : GameState.WINNER_CIRCLE;
-					} else {
-						state = GameState.DRAW;
-					}
+			if (marker == Marker.EMPTY) {
+				return GameState.NOT_COMPLETE;
+			} else if (state == GameState.DRAW) {
+				continue;
+			} else if (marker == Marker.CROSS || marker == Marker.CIRCLE) {
+				if (prevCircleOrCrossMarker != null && prevCircleOrCrossMarker != marker) {
+					state = GameState.DRAW;
+				} else {
+					state = marker == Marker.CROSS ? GameState.WINNER_CROSS : GameState.WINNER_CIRCLE;
 					prevCircleOrCrossMarker = marker;
-					break;
-				case WILD_CARD:
-					// Do nothing.
-					break;
-				case EMPTY:
-				default:
-					return GameState.NOT_COMPLETE;
+				}
 			}
 		}
 		return state;
 	}
-	
 	
 	public GameState mergeGameStates(GameState currentState, GameState newState) {
 		if (currentState == null) {
